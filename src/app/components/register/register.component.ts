@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar(){
-    console.log(this.register)
+    const email = ''
+    console.log(this.register);
   }
 
 }

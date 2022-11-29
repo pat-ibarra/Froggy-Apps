@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+//Modulos
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+
+//Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
