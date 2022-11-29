@@ -3,23 +3,22 @@
         <img class="logo" src="../../../assets/img/Login.png" alt="Login">
         <h1>FroggyWeb</h1> <br>
         <h3> Registrarse </h3>
-
-        <form [formGroup]="register"> 
+        <form (ngSubmit)="registrar()" [formGroup]="register"> 
             <!-- Campo para ingresar el nombre de usuario/correo-->
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" placeholder="name@example.com">
+                <input type="email" class="form-control" formControlName= "email" placeholder="name@example.com">
                 <label>Email </label>
             </div>
 
             <!-- Campo para ingresar la contraseña"-->
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" formControlName="password" placeholder="Password">
                 <label>Password</label>
             </div> 
 
             <!-- Campo para repetir la contraseña-->
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" formControlName="repeatPassword"placeholder="Password">
                 <label>Repeat Password</label>
             </div> 
 

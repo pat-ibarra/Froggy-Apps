@@ -20,4 +20,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  registrar(){
+    console.log(this.register)
+  }
+
 }

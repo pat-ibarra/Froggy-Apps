@@ -10,6 +10,7 @@ import { VerificarCorreoComponent } from './components/verificar-correo/verifica
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { InfoUserComponent } from './components/info-user/info-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { InfoUserComponent } from './components/info-user/info-user.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
