@@ -11,7 +11,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { InfoUserComponent } from './components/info-user/info-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     VerificarCorreoComponent,
     RecuperarContrasenaComponent,
     SpinnerComponent,
-    InfoUserComponent
   ],
   imports: [
     BrowserModule,
