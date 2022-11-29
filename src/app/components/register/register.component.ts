@@ -21,8 +21,10 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar(){
-    const email = ''
-    console.log(this.register);
+    const email = this.register.value.email;
+    const password = this.register.value.password;
+    const repeatPassword = this.register.value.repeatPassword;
+    console.log(email, password, repeatPassword);
   }
 
 }
