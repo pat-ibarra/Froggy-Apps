@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { InfoUserComponent } from './components/info-user/info-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent },
   { path: 'catalogo', component: CatalogoComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'info-user', component:InfoUserComponent},
 ];
 
 @NgModule({
