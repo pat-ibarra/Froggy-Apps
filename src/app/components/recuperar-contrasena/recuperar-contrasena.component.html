@@ -1,1 +1,21 @@
-<p>recuperar-contrasena works!</p>
+<div class="wrapper"> <!-- Este es el banner de la página, aparece en la parte superior de la página-->
+    <div class="body"> <!-- Esta clase encapsula todo el contenido dentro del banner -->
+        <img class="logo" src="../../../assets/img/Login.png" alt="Login">
+        <br>
+        <h4> Recuperar Contraseña</h4>
+
+        <form> 
+            <!-- Campo para ingresar el nombre de usuario/correo-->
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" placeholder="name@example.com">
+                <label>Email</label>
+            </div>
+
+            <!-- Botón de "Ingresar"-->
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn btn-primary btn-lg" type="button">Recuperar Contraseña</button>
+              </div> 
+              <p class="mt-3"> <a routerLink="/login">Volver</a> </p> 
+        </form>
+    </div>
+</div>
