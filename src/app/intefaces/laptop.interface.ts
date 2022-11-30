@@ -3,4 +3,5 @@ export default interface laptop{
     modelo: string;
     descripcion: string;
     costo: number;
+    img: string;
 }
