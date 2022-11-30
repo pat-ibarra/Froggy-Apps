@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Route, Router } from '@angular/router';
+import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router, 
+    private firebaseError: FirebaseCodeErrorService
   ) {
     this.register = this.fb.group({
       email: ['', Validators.required],
@@ -49,29 +51,8 @@ export class RegisterComponent implements OnInit {
     .catch((error) => {
       this.loading = false; 
       console.log(error);
-      alert(this.firebaseError(error.code))
+      alert(this.firebaseError.codeError(error.code))
     })
   }
 
-  firebaseError(code: string) {
-    switch (code) {
-      case 'auth/email-already-in-use':
-        return 'El usuario ingresado ya existe...'
-        break;
-      case 'auth/weak-password':
-        return 'La contraseña es muy débil... Prueba con otra'
-        break;
-      case 'auth/invalid-email':
-        return 'Correo electrónico o contraseña no válidos...'
-        break;
-      case 'auth/missing-email':
-        return 'Correo electrónico o contraseña no válidos...'
-        break;
-      case 'auth/internal-error':
-        return 'Las contraseñas no coinciden... verifique e intente de nuevo...'
-        break;
-      default:
-        return 'Error desconocido... inténtelo más tarde...'
-    }
-  }
 }
