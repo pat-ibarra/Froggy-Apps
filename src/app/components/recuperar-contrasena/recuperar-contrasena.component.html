@@ -5,7 +5,7 @@
         <h1>FroggyWeb</h1> <br>
         <h3>Recuperar</h3>
 
-        <form [formGroup]="recuperarUser" (ngSubmit)="recuperar">
+        <form [formGroup]="recuperarUser" (ngSubmit)="recuperar()">
             <!-- Campo para ingresar el correo-->
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">

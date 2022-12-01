@@ -20,26 +20,28 @@ export class RecuperarContrasenaComponent implements OnInit {
     private router: Router,
     private firebaseError: FirebaseCodeService
     //private toastr: ToastrService
-  ){
+  ) {
     this.recuperarUser = this.fb.group({
-        email: ['', [Validators.required, Validators.email]]
-      })
+      email: ['', [Validators.required, Validators.email]]
+    })
   }
 
   ngOnInit(): void {
   }
 
-    recuperar(){
-      const email = this.recuperarUser.value.email;
+  recuperar() {
+    const email = this.recuperarUser.value.email;
 
-      this.loading = true;
-      this.afAuth.sendPasswordResetEmail(email).then(() => {
-        //this.toastr.info('Correo enviado.', 'Recuperar Password')
-        this.router.navigate(['/login']);
-      }).catch((error)=>{
-        this.loading = false;
-        alert(this.firebaseError.codeError(error.code));
-        // this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      })
-    }
+    this.loading = true;
+    this.afAuth.sendPasswordResetEmail(email)
+    .then(() => {
+      //this.toastr.info('Correo enviado.', 'Recuperar Password')
+      alert('Se envio un correo de reinicio de password a su cuenta.');
+      this.router.navigate(['/login']);
+    }).catch((error) => {
+      this.loading = false;
+      alert(this.firebaseError.codeError(error.code));
+      // this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+    })
+  }
 }
