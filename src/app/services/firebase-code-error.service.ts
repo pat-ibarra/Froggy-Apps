@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FirebaseCodeErrorEnum } from '../utils/firebase-code-error';
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +12,31 @@ export class FirebaseCodeErrorService {
     switch (code) { 
 
       //Mensajes de Error - Register 
-      case 'auth/email-already-in-use':
+      case FirebaseCodeErrorEnum.EmailAlReadyInUse:
         return 'El usuario ingresado ya existe...'
         break;
-      case 'auth/weak-password':
+      case FirebaseCodeErrorEnum.WeakPassword:
         return 'La contraseña es muy débil... Prueba con otra'
         break;
-      case 'auth/invalid-email':
+      case FirebaseCodeErrorEnum.InvalidEmail:
         return 'Correo electrónico o contraseña no válidos...'
         break;
-      case 'auth/missing-email':
+      case FirebaseCodeErrorEnum.MissingEmail:
         return 'Correo electrónico o contraseña no válidos...'
         break;
-      case 'auth/internal-error':
+      case FirebaseCodeErrorEnum.InternalError:
         return 'Las contraseñas no coinciden... verifique e intente de nuevo...'
         break; 
 
       //Mensajes de Error - Login 
-      case 'auth/wrong-password':
+      case FirebaseCodeErrorEnum.WrongPassword:
         return 'Contraseña Incorrecta...'
         break; 
 
-      case 'auth/user-not-found':
+      case FirebaseCodeErrorEnum.UserNotFound:
         return 'El Usuario no existe...'
         break;  
-        
+
       default:
         return 'Error desconocido... inténtelo más tarde...'
     } 
