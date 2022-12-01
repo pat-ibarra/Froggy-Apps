@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FirebaseCodeErrorEnmu } from '../utils/firebase-code-error';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,19 @@ export class FirebaseCodeService {
 
     switch (code) {
       // El correo ya existe
-      case 'auth/email-already-in-use':
+      case FirebaseCodeErrorEnmu.EmailAlreadyInUse:
         return 'El usuario ya existe.';
       // El usuario no existe.
-      case 'auth/user-not-found':
+      case FirebaseCodeErrorEnmu.UserNotFound:
         return 'El usuario no existe.';
       // Contraseña debil
-        case 'auth/weak-password':
+        case FirebaseCodeErrorEnmu.WeakPwd:
         return 'La contraseña es muy debil.';
       //Contraseña incorrecta.
-      case 'auth/wrong-password':
+      case FirebaseCodeErrorEnmu.WrongPwd:
         return 'La contraseña es incorrecta.';
       // El correo es invalido
-      case 'auth/invalid-email':
+      case FirebaseCodeErrorEnmu.InvalidEmail:
         return 'El correo ingresado es invalido.';
       default:
         return 'Error desconocido';

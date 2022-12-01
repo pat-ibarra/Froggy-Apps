@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
     private firebaseError: FirebaseCodeService
     ){
     this.register = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', Validators.required],
     })
   }
@@ -43,9 +43,7 @@ export class RegisterComponent implements OnInit {
     this.loading=true;
     this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.loading = false;
-        // this.toastr.sucess('El usuario fue registrado con exito!', 'Usuario registrado');
-        this.router.navigate(['/login']);
+        this.verificarCorreo();
       }).catch((error) => {
         this.loading=false;
         // this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
@@ -53,4 +51,13 @@ export class RegisterComponent implements OnInit {
         alert(this.firebaseError.codeError(error.code));
       })
   }
+  verificarCorreo() {
+    this.afAuth.currentUser
+      .then((user) => user?.sendEmailVerification())
+      .then(() => {
+        // this.toastr.info('Le enviamos un correo electronico para su verificación', 'Verificar Correo ');
+        this.router.navigate(['/login']);
+      });
+  }
+
 }
