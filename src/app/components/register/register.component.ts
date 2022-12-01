@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
     private firebaseError: FirebaseCodeErrorService
   ) {
     this.register = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', Validators.required],
     })
   }
