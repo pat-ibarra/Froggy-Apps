@@ -11,6 +11,8 @@ import { ButtonModule } from 'primeng/button';
 
 //Componentes
 import { AppComponent } from './app.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { LoginComponent } from './components/login/login.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -33,6 +35,10 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
     ReactiveFormsModule,
     ToastModule,
     BrowserAnimationsModule,
