@@ -1,0 +1,34 @@
+<app-nbar></app-nbar>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3">Listado de Articulos</span>
+            <button class="btn btn-dark btn-lg float-right" routerLink="/create-art">Agregar</button>
+            <table class="table mt-5">
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>Componentes</th>
+                    <th>Descripcion</th>
+                    <th>Pag. Compra</th>
+                    <th>imagen</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let laptop of articulos">
+                    <td>{{laptop.modelo}}</td>
+                    <td>{{laptop.componentes}}</td>
+                    <td>{{laptop.descripcion}}</td>
+                    <td>{{laptop.pagcompra}}</td>
+                    <td><img src="{{laptop.img}}" class= "img-catalogo"></td>
+                    <td>
+                      <i class="fa-regular fa-pen-to-square fal-lg text-info mr-5"></i>
+                      <i class="fa-solid fa-trash fal-lg text-danger"></i>
+                    </td>
+                  </tr>  
+                </tbody>
+              </table>   
+        </div>
+    </div>
+</div>

@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { ListComponent } from './components/list/list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
+import { CreateArtComponent} from './components/create-art/create-art.component';
+import { NbarComponent } from './components/nbar/nbar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,6 +16,8 @@ const routes: Routes = [
   { path: 'verificar-correo', component: VerificarCorreoComponent },
   { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent },
   { path: 'catalogo', component: CatalogoComponent },
+  { path: 'list-articulos', component: ListComponent},
+  { path: 'create-art', component: CreateArtComponent}, 
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
