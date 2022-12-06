@@ -3,11 +3,14 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseCodeService } from 'src/app/services/firebase-code.service';
+import { MessageService } from 'primeng/api';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-recuperar-contrasena',
   templateUrl: './recuperar-contrasena.component.html',
-  styleUrls: ['./recuperar-contrasena.component.css']
+  styleUrls: ['./recuperar-contrasena.component.css'],
+  providers: [MessageService]
 })
 export class RecuperarContrasenaComponent implements OnInit {
   recuperarUser: FormGroup;
@@ -15,6 +18,7 @@ export class RecuperarContrasenaComponent implements OnInit {
 
 
   constructor(
+    private msgService : MessageService,
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
@@ -36,7 +40,8 @@ export class RecuperarContrasenaComponent implements OnInit {
     this.afAuth.sendPasswordResetEmail(email)
     .then(() => {
       //this.toastr.info('Correo enviado.', 'Recuperar Password')
-      alert('Se envio un correo de reinicio de password a su cuenta.');
+      this.msgService.add({severity:'success', summary:'Recuperar contraseña',detail:'Correo enviado.'});
+      //alert('Se envio un correo de reinicio de password a su cuenta.');
       this.router.navigate(['/login']);
     }).catch((error) => {
       this.loading = false;
