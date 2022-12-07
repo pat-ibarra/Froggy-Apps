@@ -18,7 +18,7 @@
                 <span  *ngIf="register.get('email')?.hasError('email') && register.get('email')?.touched" class="text-danger errorLabel">
                   * El email <strong>no</strong> es valido.
                 </span>
-                
+
             </div>
 
             <!-- Campo para ingresar la contraseña"-->
@@ -32,7 +32,6 @@
                 <span  *ngIf="register.get('password')?.hasError('minlenght') && register.get('password')?.touched" class="text-danger errorLabel">
                   * La password debe tener <strong>más</strong> de 6 caracteres.
                 </span>
-
             </div>
 
             <!-- Campo para repetir la contraseña-->
@@ -43,8 +42,8 @@
 
             <!-- Botón de "Aceptar"-->
             <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-lg" [disabled]="register.invalid" type="submit">Aceptar</button>
-              </div>
+              <button class="btn btn-primary btn-lg" [disabled]="register.invalid" type="submit">Aceptar</button>
+            </div>
 
               <a routerLink="/login">Volver</a>
 

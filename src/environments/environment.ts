@@ -14,9 +14,10 @@ export const environment = {
     messagingSenderId: '539337829090',
   },
   production: false,
-  firebaseConfig:{
+  firebaseConfig: {
     apiKey: "AIzaSyA_O4tGJ4QSE-hmur9jezBKHJROsh8izEA",
     authDomain: "froggy-apps.firebaseapp.com",
+    databaseURL: "https://froggy-apps-default-rtdb.firebaseio.com",
     projectId: "froggy-apps",
     storageBucket: "froggy-apps.appspot.com",
     messagingSenderId: "539337829090",

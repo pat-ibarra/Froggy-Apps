@@ -4,5 +4,6 @@ export enum FirebaseCodeErrorEnmu{
  WeakPwd = 'auth/weak-password',
  WrongPwd = 'auth/wrong-password',
  InvalidEmail = 'auth/invalid-email',
-
+ MissingEmail = 'auth/missing-email',
+ InternalError = 'auth/internal-error',
 }

@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', Validators.required],
     })
-  }
+   }
 
   ngOnInit(): void { }
 
@@ -34,6 +34,8 @@ export class RegisterComponent implements OnInit {
     const email = this.register.value.email;
     const password = this.register.value.password;
     const repeatPassword = this.register.value.repeatPassword;
+
+    console.log(repeatPassword)
 
     // if(password!= repetirPassword)[
     //   alert(this.toastr.error('Las contraseñas ingresadas deben ser las mismas', 'Error'));

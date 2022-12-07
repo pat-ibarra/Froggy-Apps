@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //Modulos
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
@@ -21,6 +22,10 @@ import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 import { environment } from 'src/environments/environment';
+import { ListComponent } from './components/list/list.component';
+import { CreateArtComponent } from './components/create-art/create-art.component';
+import { NbarComponent } from './components/nbar/nbar.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -31,19 +36,18 @@ import { environment } from 'src/environments/environment';
     VerificarCorreoComponent,
     RecuperarContrasenaComponent,
     SpinnerComponent,
+    ListComponent,
+    CreateArtComponent,
+    NbarComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebaseConfig), provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore()),
+    AngularFirestoreModule,
     ReactiveFormsModule,
-    ToastModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
