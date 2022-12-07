@@ -4,7 +4,7 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="card text-center">
                 <div class="card-body">
-                    <h3>Crear Nuevo Articulo</h3>
+                    <h3>{{titulo}}</h3>
                     <div *ngIf="submitted && createArticulo.invalid" class="alert alert-danger">Todos los campos son obligatorios</div>
                     <form class="mt-4" [formGroup]="createArticulo" (ngSubmit)="agregarArt()">
                         <input type="text" class="form-control form-control-lg mb-4" placeholder="Modelo" formControlName="modelo">

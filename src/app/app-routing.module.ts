@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'list-articulos', component: ListComponent},
   { path: 'create-art', component: CreateArtComponent}, 
+  { path: 'editArt/:id', component: CreateArtComponent}, 
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

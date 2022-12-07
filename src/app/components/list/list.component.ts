@@ -32,4 +32,12 @@ export class ListComponent implements OnInit {
       console.log(this.articulos);
     });
   }
+
+  eliminarArt(id: string){
+    this._articulosService.eliminarArt(id).then(() =>{
+      console.log('articulo eliminado con exito');
+    }).catch(error =>{
+      console.log(error);
+    })
+  }
 } 

@@ -23,8 +23,9 @@
                     <td>{{laptop.pagcompra}}</td>
                     <td><img src="{{laptop.img}}" class= "img-catalogo"></td>
                     <td>
-                      <i class="fa-regular fa-pen-to-square fal-lg text-info mr-5"></i>
-                      <i class="fa-solid fa-trash fal-lg text-danger"></i>
+                      <i class="fa-regular fa-pen-to-square fal-lg text-info mr-5" [routerLink]="['/editArt/', laptop
+                      .id]"></i>
+                      <i (click)="eliminarArt(laptop.id)" class="fa-solid fa-trash fal-lg text-danger"></i>
                     </td>
                   </tr>  
                 </tbody>

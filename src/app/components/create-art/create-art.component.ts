@@ -1,6 +1,7 @@
+import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, TitleStrategy } from '@angular/router';
 import { ArticulosService } from 'src/app/services/articulos.service';
 
 @Component({
@@ -11,10 +12,13 @@ import { ArticulosService } from 'src/app/services/articulos.service';
 export class CreateArtComponent implements OnInit {
   createArticulo: FormGroup;
   submitted=false;
+  id: string | null;
+  titulo = 'Agregar Empleado';
 
   constructor(private fb: FormBuilder,
               private _articulosService: ArticulosService,
-              private router: Router) {
+              private router: Router,
+              private aRoute: ActivatedRoute) {
     this.createArticulo=this.fb.group({
       modelo: ["",Validators.required],
       componentes: ["",Validators.required],
@@ -22,9 +26,14 @@ export class CreateArtComponent implements OnInit {
       pagCompra: ["",Validators.required],
       img:["",Validators.required]
     })
+
+    this.id=this.aRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
+
   }
 
   ngOnInit(): void {
+    this.esEditar()
   }
 
   agregarArt(){
@@ -50,6 +59,15 @@ export class CreateArtComponent implements OnInit {
     }).catch(error =>{
       console.log(error);
     })
+  }
+
+  esEditar(){
+    this.titulo='Editar articulo';
+    if(this.id !== null){
+      this._articulosService.getArti(this.id).subscribe(data => {
+        console.log(data);
+      });
+    }
   }
 
 }

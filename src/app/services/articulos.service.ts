@@ -15,6 +15,14 @@ export class ArticulosService {
   }
 
   getArticulos(): Observable<any> {
-    return this.firestore.collection('laptop').snapshotChanges();
+    return this.firestore.collection('laptop', ref=>ref.orderBy('modelo','asc')).snapshotChanges();
+  }
+
+  eliminarArt(id: string): Promise<any>{
+    return this.firestore.collection('laptop').doc(id).delete();
+  }
+
+  getArti(id : string): Observable<any>{
+    return this.firestore.collection('laptop').doc(id).snapshotChanges();
   }
 }
