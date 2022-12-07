@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
-    private router: Router, 
+    private router: Router,
     private firebaseError: FirebaseCodeErrorService
   ) {
     this.register = this.fb.group({
@@ -40,19 +40,24 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.loading = true; 
+    this.loading = true;
     this.afAuth.createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      this.loading = false; 
-      this.router.navigate(['/login']);
-      alert('Registro Exitoso!');
-      console.log(user);
-    })
-    .catch((error) => {
-      this.loading = false; 
-      console.log(error);
-      alert(this.firebaseError.codeError(error.code))
-    })
+      .then((user) => {
+        //console.log(user); 
+        this.verificarCorreo();
+      })
+      .catch((error) => {
+        this.loading = false;
+        console.log(error);
+        alert(this.firebaseError.codeError(error.code))
+      })
   }
 
+  verificarCorreo() {
+    this.afAuth.currentUser.then(user => user?.sendEmailVerification())
+      .then(() => {
+        alert('Le enviamos un correo de verificación a su buzón');
+        this.router.navigate(['/login']);
+      });
+  }
 }
