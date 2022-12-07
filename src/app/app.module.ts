@@ -21,6 +21,7 @@ import { NbarComponent } from './components/nbar/nbar.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './components/admin/admin.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AdminComponent } from './components/admin/admin.component';
     CreateArtComponent,
     NbarComponent,
     AdminComponent,
+    DetallesComponent,
   ],
   imports: [
     BrowserModule,

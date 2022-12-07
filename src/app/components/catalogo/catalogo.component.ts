@@ -26,4 +26,13 @@ export class CatalogoComponent implements OnInit {
       console.log(this.articulos);
     });
   }
+
+  gDatos(id: string, modelo:string, componentes:string, descripcion:string, pagCompra:string, img:string){
+    this._articulosService.setId(id);
+    this._articulosService.setModelo(modelo);  
+    this._articulosService.setDescripcion(descripcion);
+    this._articulosService.setComponentes(componentes);
+    this._articulosService.setCompra(pagCompra);
+    this._articulosService.setImg(img);
+  }
 }

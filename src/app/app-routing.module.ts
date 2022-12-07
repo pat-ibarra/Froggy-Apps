@@ -9,6 +9,7 @@ import { VerificarCorreoComponent } from './components/verificar-correo/verifica
 import { CreateArtComponent} from './components/create-art/create-art.component';
 import { NbarComponent } from './components/nbar/nbar.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'list-articulos', component: ListComponent},
   { path: 'create-art', component: CreateArtComponent}, 
   { path: 'editArt/:id', component: CreateArtComponent}, 
+  { path: 'detalles/:id', component: DetallesComponent}, 
   { path: 'logad', component: AdminComponent},
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
