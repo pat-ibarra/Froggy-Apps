@@ -25,4 +25,8 @@ export class ArticulosService {
   getArti(id : string): Observable<any>{
     return this.firestore.collection('laptop').doc(id).snapshotChanges();
   }
+
+  actualizarEmpleado(id: string, data:any):Promise<any>{
+    return this.firestore.collection('laptop').doc(id).update(data);
+  }
 }

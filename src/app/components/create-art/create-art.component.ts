@@ -36,13 +36,21 @@ export class CreateArtComponent implements OnInit {
     this.esEditar()
   }
 
-  agregarArt(){
+  agregarEditarArt(){
     this.submitted=true;
 
     if(this.createArticulo.invalid){
       return;
     }
 
+    if(this.id === null){
+      this.agregarArt();
+    }else{
+      this.editarArt(this.id);
+    }
+  }
+
+  agregarArt(){
     const articulo: any ={
       modelo: this.createArticulo.value.modelo,
       componentes: this.createArticulo.value.componentes,
@@ -61,11 +69,36 @@ export class CreateArtComponent implements OnInit {
     })
   }
 
+  editarArt(id: string){
+    const articulo: any ={
+      modelo: this.createArticulo.value.modelo,
+      componentes: this.createArticulo.value.componentes,
+      descripcion: this.createArticulo.value.descripcion,
+      pagcompra: this.createArticulo.value.pagCompra,
+      img: this.createArticulo.value.img,
+    
+      fechaActualizacion: new Date()
+    }
+
+    this._articulosService.actualizarEmpleado(id, articulo).then(() => {
+      console.log('El articulo ha sido modificado');
+      this.router.navigate(['/list-articulos']);
+    });
+  
+  }
+
   esEditar(){
-    this.titulo='Editar articulo';
     if(this.id !== null){
+      this.titulo='Editar articulo';
       this._articulosService.getArti(this.id).subscribe(data => {
-        console.log(data);
+        console.log(data.payload.data()['modelo']);
+        this.createArticulo.setValue({
+          modelo: data.payload.data()['modelo'],
+          componentes: data.payload.data()['componentes'],
+          descripcion: data.payload.data()['descripcion'],
+          pagcompra: data.payload.data()['pagCompra'],
+          img: data.payload.data()['img']
+        })
       });
     }
   }

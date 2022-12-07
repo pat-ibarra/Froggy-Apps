@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h3>{{titulo}}</h3>
                     <div *ngIf="submitted && createArticulo.invalid" class="alert alert-danger">Todos los campos son obligatorios</div>
-                    <form class="mt-4" [formGroup]="createArticulo" (ngSubmit)="agregarArt()">
+                    <form class="mt-4" [formGroup]="createArticulo" (ngSubmit)="agregarEditarArt()">
                         <input type="text" class="form-control form-control-lg mb-4" placeholder="Modelo" formControlName="modelo">
                         <input type="text" class="form-control form-control-lg mb-4" placeholder="Componentes" formControlName="componentes">
                         <input type="text" class="form-control form-control-lg mb-4" placeholder="Descripcion" formControlName="descripcion">
