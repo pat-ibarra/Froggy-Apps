@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
   eliminarArt(id: string){
     this._articulosService.eliminarArt(id).then(() =>{
       console.log('articulo eliminado con exito');
-    }).catch(error =>{
+    }).catch((error) =>{
       console.log(error);
     })
   }
