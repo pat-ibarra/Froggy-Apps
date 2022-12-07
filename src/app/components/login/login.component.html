@@ -1,0 +1,44 @@
+<div class="wrapper"> <!-- Este es el banner de la página, aparece en la parte superior de la página-->
+
+  <div *ngIf="!loading" class="body"> <!-- Esta clase encapsula todo el contenido dentro del banner -->
+
+    <img class="logo" src="../../../assets/img/Login.png" alt="Login">
+        <h1>FroggyWeb</h1> <br>
+        <h3> Login</h3>
+
+        <form (ngSubmit)="login()" [formGroup]="loginUsuario">
+            <!-- Campo para ingresar el nombre de usuario/correo-->
+            <div class="form-floating mb-3">
+                <input type="email" formControlName="email" class="form-control" placeholder="name@example.com">
+                <label>Email</label>
+
+                <span  *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched" class="text-danger errorLabel">
+                  * El <strong>correo</strong> es requerido.
+                </span>
+                <span  *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched" class="text-danger errorLabel">
+                  * El email <strong>no</strong> es valido.
+                </span>
+
+            </div>
+
+            <!-- Campo para ingresar la contraseña"-->
+            <div class="form-floating mb-3">
+                <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                <label>Password</label>
+
+                <span  *ngIf="loginUsuario.get('password')?.hasError('required') && loginUsuario.get('password')?.touched" class="text-danger errorLabel">
+                  * La contraseña es requerida.
+                </span>
+
+            </div>
+
+            <!-- Botón de "Ingresar"-->
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-lg" type="submit" [disabled]="loginUsuario.invalid">Ingresar</button>
+              </div>
+              <p class="mt-3"> ¿No tienes cuenta? <a routerLink="/register">Registrar</a> </p>
+              <p class="mt-3"> ¿Olvidaste tu contraseña? <a routerLink="/recuperar-contrasena">Recuperar Contraseña</a></p>
+        </form>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+</div>

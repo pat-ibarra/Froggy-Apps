@@ -1,0 +1,31 @@
+<div class="wrapper"> <!-- Este es el banner de la página, aparece en la parte superior de la página-->
+
+  <div class="body" *ngIf="!loading"> <!-- Esta clase encapsula todo el contenido dentro del banner -->
+        <img class="logo" src="../../../assets/img/Login.png" alt="Login">
+        <h1>FroggyWeb</h1> <br>
+        <h3>Recuperar</h3>
+
+        <form [formGroup]="recuperarUser" (ngSubmit)="recuperar()">
+            <!-- Campo para ingresar el correo-->
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
+                <label>Email</label>
+
+                <span  *ngIf="recuperarUser.get('email')?.hasError('required') && recuperarUser.get('email')?.touched" class="text-danger errorLabel">
+                  * El <strong>correo</strong> es requerido.
+                </span>
+                <span  *ngIf="recuperarUser.get('email')?.hasError('email') && recuperarUser.get('email')?.touched" class="text-danger errorLabel">
+                  * El email <strong>no</strong> es valido.
+                </span>
+
+            </div>
+
+            <!-- Botón de "Recuperar"-->
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn btn-primary btn-lg" [disabled]="recuperarUser.invalid" type="submit">Recuperar</button>
+              </div>
+              <a routerLink="/Login"> Volver </a>
+        </form>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+</div>
