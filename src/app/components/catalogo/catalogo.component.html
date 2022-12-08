@@ -10,10 +10,10 @@
           <a class="nav-link active" aria-current="page" href="#" routerLink="/catalogo">Catalogo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Log out</a>
+          <a class="nav-link" routerLink="/logad" align="right">Admin-Access</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/logad" >admin</a>
+          <a class="nav-link" id="nav-bar-admin" (click)="logOut()" href="#" align="right">Log Out</a>
         </li>
       </ul>
     </div>
@@ -24,7 +24,7 @@
 <main>    
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let laptop of articulos">
+        <div id="size-container" class="col" *ngFor="let laptop of articulos">
           <div class="card shadow-sm">
             <img src="">
             <div class="card-body">

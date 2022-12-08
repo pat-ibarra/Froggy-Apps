@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { ArticulosService } from 'src/app/services/articulos.service';
 
 @Component({
@@ -7,12 +9,27 @@ import { ArticulosService } from 'src/app/services/articulos.service';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
+  dataUser: any;
   articulos: any[]=[];
 
-  constructor(private _articulosService: ArticulosService) { }
+  constructor(
+    private _articulosService: ArticulosService, 
+    private afAuth: AngularFireAuth, 
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getArticulos();
+    this.afAuth.currentUser.then(user => { 
+      if(user && user.emailVerified) { 
+        this.dataUser = user; 
+      } else { 
+        this.router.navigate(['/login']);
+      }
+    })
+  }
+  
+  logOut() { 
+    this.afAuth.signOut().then(() => this.router.navigate(['/login']));
   }
 
   getArticulos(){
