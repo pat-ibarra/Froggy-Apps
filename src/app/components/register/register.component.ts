@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-//import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeService } from 'src/app/services/firebase-code.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [MessageService]
 })
 export class RegisterComponent implements OnInit {
   register: FormGroup;
@@ -18,14 +19,14 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
-    //private toastr: ToastrService
+    private msgService: MessageService,
     private firebaseError: FirebaseCodeService
     ){
     this.register = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', Validators.required],
-    })
+    });
    }
 
   ngOnInit(): void { }
@@ -35,12 +36,11 @@ export class RegisterComponent implements OnInit {
     const password = this.register.value.password;
     const repeatPassword = this.register.value.repeatPassword;
 
-    console.log(repeatPassword)
-
-    // if(password!= repetirPassword)[
-    //   alert(this.toastr.error('Las contraseñas ingresadas deben ser las mismas', 'Error'));
-    //  return;
-    // ]
+    console.log(repeatPassword);
+    if(password !== repeatPassword){
+      this.msgService.add({severity:'success', summary:'Error',detail:'Las contraseñas ingresadas deben ser las mismas.'});
+      return;
+  }
 
     this.loading=true;
     this.afAuth.createUserWithEmailAndPassword(email, password)

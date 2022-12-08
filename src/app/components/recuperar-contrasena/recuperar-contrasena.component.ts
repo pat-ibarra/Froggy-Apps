@@ -6,6 +6,7 @@ import { FirebaseCodeService } from 'src/app/services/firebase-code.service';
 import { MessageService } from 'primeng/api';
 import { ThisReceiver } from '@angular/compiler';
 
+
 @Component({
   selector: 'app-recuperar-contrasena',
   templateUrl: './recuperar-contrasena.component.html',
@@ -23,7 +24,6 @@ export class RecuperarContrasenaComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private router: Router,
     private firebaseError: FirebaseCodeService
-    //private toastr: ToastrService
   ) {
     this.recuperarUser = this.fb.group({
       email: ['', [Validators.required, Validators.email]]

@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { ToastModule } from 'primeng/toast';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { ButtonModule } from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule} from 'primeng/button';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -44,6 +44,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    ToastModule,
+    BrowserAnimationsModule,
+    ButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
     ReactiveFormsModule,
