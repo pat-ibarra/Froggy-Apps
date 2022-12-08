@@ -36,54 +36,6 @@ export class ArticulosService {
     return this.firestore.collection('laptop').doc(id).update(data);
   }
 
-  setId(id: string){
-    this.id=id;
-  }
-
-  setModelo(modelo:string){
-    this.modelo=modelo;
-  }
-
-  setDescripcion(descripcion:string){
-    this.descripcion= descripcion;
-  }
-
-  setComponentes(componentes:string){
-    this.componentes= componentes;
-  }
-
-  setCompra(pagCompra:string){
-    this.pagCompras=pagCompra;
-  }
-
-  setImg(img:string){
-    this.img= img;
-  }
-
-  getId(){
-    return this.id;
-  }
-
-  getModelo(){
-    return this.modelo;
-  }
-
-  getDescripcion(){
-    return this.descripcion;
-  }
-
-  getComponentes(){
-    return this.componentes;
-  }
-
-  getCompra(){
-    return this.pagCompras;
-  }
-
-  getImg(){
-    return this.img;
-  }
-
 
 
 }
